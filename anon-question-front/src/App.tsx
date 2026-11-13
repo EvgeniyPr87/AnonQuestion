@@ -22,10 +22,10 @@ function App() {
   console.log('VK Bridge error:', err)
 
   const isLocal=window.location.hostname==='localhost'
-  const isNelife=window.location.hostname.includes('netlify.app')
+  const isNetlife=window.location.hostname.includes('netlify.app')
 
 
-  if(isLocal || isNelife){
+  if(isLocal || isNetlife){
     setUser({id: 123456, first_name: 'Тест'})
   }else{
   setError('Пожалуйста, откройте приложение внутри ВКонтакте')
