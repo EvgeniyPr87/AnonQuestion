@@ -1,0 +1,6 @@
+/*
+AccesS-Control-Allow-Origin: *
+Content-Type: text/html; charset=UTF-8
+
+/assets/*
+Content-Type: application/javascript
