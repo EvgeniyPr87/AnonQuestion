@@ -9,7 +9,7 @@ import '@vkontakte/vkui/dist/vkui.css'
 
 function App() {
   const [user, setUser]=useState<{id: number; first_name: string} | null>(null)
-  const [error, setError]=useState<string | null>(null)
+  // const [error, setError]=useState<string | null>(null)
 
   useEffect(()=>{
     let isMounted=true;
