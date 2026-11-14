@@ -12,25 +12,40 @@ function App() {
   const [error, setError]=useState<string | null>(null)
 
   useEffect(()=>{
+    let isMounted=true;
+
+    const timer=setTimeout(()=>{
+    if(isMounted){
+      console.log("Тфймер сработал, ВК молчит. Показываю интерфейс");
+      setUser({id:0, first_name: 'Друг'});
+    }
+
+    }, 2000);
+
+
   bridge.send('VKWebAppInit').catch(console.error)
 
   bridge.send('VKWebAppGetUserInfo' )
   .then((data: any)=>{
-    setUser({id: data.id, first_name: data.first_name})
+    if(isMounted){
+      clearTimeout(timer);
+      setUser({id: data.id, first_name: data.first_name})
+    }
+    
   })
 .catch((err)=>{
-  console.log('VK Bridge error:', err)
+  console.console.error('VK Bridge error:', err);
 
-  const isLocal=window.location.hostname==='localhost'
-  const isNetlife=window.location.hostname.includes('netlify.app')
-
-
-  if(isLocal || isNetlife){
-    setUser({id: 123456, first_name: 'Тест'})
-  }else{
-  setError('Пожалуйста, откройте приложение внутри ВКонтакте')
+  if(isMounted){
+    clearTimeout(timer);
+    setUser({id:0, first_name: 'Друг'});
   }
-})
+
+});
+return ()=>{
+  isMounted=false;
+  clearTimeout(timer);
+};
 
 },[])
 
