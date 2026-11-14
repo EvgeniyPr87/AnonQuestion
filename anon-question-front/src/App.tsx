@@ -34,7 +34,7 @@ function App() {
     
   })
 .catch((err)=>{
-  console.console.error('VK Bridge error:', err);
+  console.error('VK Bridge error:', err);
 
   if(isMounted){
     clearTimeout(timer);
