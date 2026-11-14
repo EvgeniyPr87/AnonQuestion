@@ -56,11 +56,11 @@ return ()=>{
           <SplitCol>
            <Panel id="main">
            <PanelHeader>Анонимные вопросы</PanelHeader>
-           {error && (
+           {/* {error && (
             <Div><Placeholder>{error} </Placeholder></Div>
-           )}
+           )} */}
 
-           {!user && !error ? (
+           {!user ? (
             <Div><Spinner size="l"/></Div>
            ) : user ? (
             <Group>
